@@ -16,7 +16,7 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
-                    sh 'docker build -t yehova/devops-integration .'
+                    sh 'docker build -t yehova/devops-integration1 .'
                 }
             }
         }
@@ -24,10 +24,10 @@ pipeline {
             steps{
                 script{
                    withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                   sh 'docker login -u youngminds73 -p ${dockerhubpwd}'
+                   sh 'docker login -u yehova -p ${dockerhubpwd}'
 
 }
-                   sh 'docker push youngminds73/devops-integration'
+                   sh 'docker push yehova/devops-integration1'
                 }
             }
         }
